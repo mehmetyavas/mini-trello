@@ -47,8 +47,6 @@ public class BaseController : Controller
         return result.Success
             ? Ok(result)
             : BadRequest(result);
-
-        //TODO BadRequest hiç bir zaman dönmüyor. Burayı tekrar kurgula ve bana kontrol ettir.
     }
 
     /// <summary>
