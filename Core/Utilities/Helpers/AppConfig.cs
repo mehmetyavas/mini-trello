@@ -31,6 +31,8 @@ public static class AppConfig
 
     public static Mail MailBody { get; set; } = null!;
 
+    public static string? OpenAIKey;
+
 
     public static void Build(IConfiguration conf)
     {
@@ -54,6 +56,8 @@ public static class AppConfig
 
         AppClient = AppInfo.AppUrl;
         MailBody = conf.GetSection("Mail").Get<Mail>()!;
+
+        OpenAIKey = conf.GetSection("OpenAI:Key").Get<string>();
 
         ConnectionStringsCache = conf.GetSection(nameof(ConnectionStringsCache)).Get<ConnectionStringsCache>()!;
     }

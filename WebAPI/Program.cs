@@ -11,6 +11,7 @@ using MediatR;
 using Microsoft.AspNetCore.Localization;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using WebAPI.Configuration;
+using WebAPI.Services.OpenAI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,13 +44,14 @@ builder.ConfigureRateLimiter();
 
 
 
+
 builder.Services.AddDbContext<AppDbContext>();
 
 builder.Services.AddScoped<UnitOfWork>();
 
 builder.Services.ConfigureServices();
 
-
+builder.Services.AddScoped<OpenAiService>();
 var app = builder.Build();
 
 
