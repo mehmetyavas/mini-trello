@@ -2,6 +2,7 @@ using Core.Data;
 using Core.Data.Enum;
 using Core.Utilities.Helpers;
 using Core.Utilities.Results;
+using Core.Utilities.Security.Hashing;
 using MediatR;
 using WebAPI.Business.Auth.Request;
 using WebAPI.Business.Mail;
@@ -31,6 +32,13 @@ public class RegisterRequestHandler : IRequestHandler<RegisterRequest, IResult>
             return new SuccessResult(LangKeys.RegistrationSuccessful.ToString());
 
 
+        var pwdSalt = Array.Empty<byte>();
+        var pwdHash = Array.Empty<byte>();
+        if (!string.IsNullOrWhiteSpace(request.Password))
+        {
+            HashingHelper.CreatePasswordHash(request.Password, out pwdSalt, out pwdHash);
+        }
+
         var verifyToken = CodeGenerator.CreateVerifyToken();
 
         var user = new Core.Data.Entity.User
@@ -41,6 +49,8 @@ public class RegisterRequestHandler : IRequestHandler<RegisterRequest, IResult>
             MobilePhone = request.MobilPhones,
             IsVerified = false,
             VerifyToken = verifyToken,
+            PasswordSalt = pwdSalt,
+            PasswordHash = pwdHash,
         };
 
         _unitOfWork.Users.Add(user);

@@ -31,4 +31,10 @@
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\Avatar\" />
+      <Folder Include="wwwroot\File\" />
+      <Folder Include="wwwroot\ProjectFile\" />
+    </ItemGroup>
+
 </Project>

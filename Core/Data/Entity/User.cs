@@ -31,9 +31,14 @@ public class User : BaseEntity<Guid>
 
     public bool IsVerified { get; set; }
     public DateTime VerifiedAt { get; set; }
-    public long LoginCode { get; set; }
+    public long? LoginCode { get; set; }
 
-    public DateTime LoginCodeExpiredAt { get; set; }
+    public DateTime? LoginCodeExpiredAt { get; set; }
+    
+    
+
+    public byte[]? PasswordSalt { get; set; }
+    public byte[]? PasswordHash { get; set; }
     public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 
     public virtual ICollection<UserLogin> UserLogins { get; set; } = new List<UserLogin>();

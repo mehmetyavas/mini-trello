@@ -31,6 +31,10 @@ public class LoginRequestHandler : IRequestHandler<LoginRequest, IResult>
             LoginProvider.Facebook => await _providerManager.LoginWithFacebook(request.AccessToken!, request.RememberMe,
                 cancellationToken),
             LoginProvider.Apple => new ErrorResult(LangKeys.NotSupported),
+            LoginProvider.Password => await _providerManager.LoginWithPassword(
+                request.Email,
+                request.Password,
+                request.RememberMe),
             _ => new ErrorResult(LangKeys.NotSupported),
         };
 

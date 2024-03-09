@@ -1,8 +1,13 @@
 using Core.Data;
 using Core.Data.Dto.Auth;
+using Core.Data.Dto.User;
 using Core.Data.Enum;
 using Core.Extensions;
 using Core.Utilities.Results;
+using Core.Utilities.Security.Hashing;
+using Core.Utilities.Security.Jwt;
+using Microsoft.EntityFrameworkCore;
+using WebAPI.Business.Auth.Request;
 using WebAPI.Business.Facebook;
 using WebAPI.Business.Google;
 using WebAPI.Business.Mail;
@@ -111,6 +116,42 @@ public class LoginProviderManager
         _unitOfWork.Users.Update(user);
 
         await _unitOfWork.SaveAsync(cancellationToken);
+
+        return new SuccessResult<AuthResponse>(newUserLogin);
+    }
+
+
+    public async Task<IResult<AuthResponse>> LoginWithPassword(
+        string email,
+        string password,
+        bool rememberMe)
+    {
+        var user = await _unitOfWork.Users.Query()
+            .FirstOrDefaultAsync(x => x.Email == email);
+
+        if (user is null)
+            return new ErrorResult<AuthResponse>(LangKeys.EmailOrPasswordIncorrect.ToString());
+
+        if (!HashingHelper.VerifyPasswordHash(password, user.PasswordSalt, user.PasswordHash))
+        {
+            return new ErrorResult<AuthResponse>(LangKeys.EmailOrPasswordIncorrect);
+        }
+
+        if (!user.IsVerified)
+        {
+            return new ErrorResult<AuthResponse>(LangKeys.UserIsNotVerified);
+        }
+
+        var userClaims = _unitOfWork.Users.LoginClaims(user!);
+
+        var newUserLogin =
+            await _unitOfWork.UserLogins.Login(userClaims, LoginProvider.Password, rememberMe);
+
+
+        _unitOfWork.Users.Update(user);
+
+        await _unitOfWork.SaveAsync();
+
 
         return new SuccessResult<AuthResponse>(newUserLogin);
     }

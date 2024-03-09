@@ -10,5 +10,6 @@ public enum LoginProvider
     Google = 1,
     Facebook = 2,
     Apple = 3,
-    Sms = 4
+    Sms = 4,
+    Password = 5
 }

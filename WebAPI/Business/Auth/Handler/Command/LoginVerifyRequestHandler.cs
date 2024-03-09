@@ -24,6 +24,7 @@ public class LoginVerifyRequestHandler : IRequestHandler<LoginVerifyRequest, IRe
 
         if (user is null)
             return new ErrorResult<AuthResponse>(LangKeys.UserNotFound.ToString());
+        
 
         if (user.LoginCodeExpiredAt < DateTime.Now)
             return new ErrorResult<AuthResponse>(LangKeys.LoginExpired.ToString());

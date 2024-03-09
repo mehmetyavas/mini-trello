@@ -13,6 +13,7 @@ public class LoginRequest : IRequest<IResult>
 
     [EmailAddress] public string? Email { get; set; }
     public string? AccessToken { get; set; }
+    public string? Password { get; set; }
 
     public bool RememberMe { get; set; }
 
@@ -21,9 +22,11 @@ public class LoginRequest : IRequest<IResult>
     {
         return Provider switch
         {
-            LoginProvider.Mail => Email is not null,
-            LoginProvider.Google => AccessToken is not null,
-            LoginProvider.Facebook => AccessToken is not null,
+            LoginProvider.Mail => !string.IsNullOrWhiteSpace(Email),
+            LoginProvider.Google => !string.IsNullOrWhiteSpace(AccessToken),
+            LoginProvider.Facebook => !string.IsNullOrWhiteSpace(AccessToken),
+            LoginProvider.Password => !string.IsNullOrWhiteSpace(Email)&&
+                                      !string.IsNullOrWhiteSpace(Password),
             LoginProvider.Apple => true,
             LoginProvider.Sms => true,
             _ => throw new NotFoundException(LangKeys.InvalidProvider.Localize())

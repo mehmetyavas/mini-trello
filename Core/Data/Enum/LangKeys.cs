@@ -65,5 +65,7 @@ public enum LangKeys
     LoginRequired,
     WrongParameter,
     InvalidPasswordFormat,
-    AvatarUpdatedSuccessfully
+    AvatarUpdatedSuccessfully,
+    EmailOrPasswordIncorrect,
+    UserIsNotVerified
 }
