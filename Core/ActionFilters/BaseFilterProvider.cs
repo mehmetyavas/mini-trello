@@ -22,7 +22,8 @@ public class BaseFilterProvider : IFilterProvider
 
         var controllerType = actionDescriptor.ControllerTypeInfo;
 
-        var anonymousAttribute = controllerType.GetCustomAttribute<AllowAnonymousAttribute>();
+        var anonymousAttribute = controllerType.GetCustomAttribute<AllowAnonymousAttribute>()
+            ??actionDescriptor.MethodInfo.GetCustomAttribute<AllowAnonymousAttribute>();
 
 
         var actionKeyAttributes =

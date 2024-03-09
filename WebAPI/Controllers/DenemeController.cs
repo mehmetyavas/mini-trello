@@ -5,7 +5,6 @@ using WebAPI.Services.OpenAI;
 
 namespace WebAPI.Controllers;
 
-[AllowAnonymous]
 public class DenemeController:BaseController
 {
     private OpenAiService _openAiService;
@@ -15,7 +14,8 @@ public class DenemeController:BaseController
         _openAiService = openAiService;
     }
 
-    [HttpGet]
+    [HttpGet][AllowAnonymous]
+
     public async Task<IActionResult> CompleteSentence(string text)
     {
         var result = await _openAiService.CompleteSentence(text);
