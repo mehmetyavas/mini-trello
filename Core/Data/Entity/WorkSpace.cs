@@ -20,4 +20,5 @@ public class WorkSpace : BaseEntity
 
 
     public virtual ICollection<WorkSpaceMember> Members { get; set; } = new List<WorkSpaceMember>();
+    public virtual ICollection<TaskList> TaskLists { get; set; } = new List<TaskList>();
 }

@@ -38,6 +38,7 @@ public class AppDbContext : DbContext
     
     public DbSet<WorkSpace> WorkSpaces { get; set; }
     public DbSet<WorkSpaceMember> WorkSpaceMembers { get; set; }
+    public DbSet<TaskList> TaskLists { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
