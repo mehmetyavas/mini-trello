@@ -33,7 +33,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Business\TaskList\Handler\Command\" />
       <Folder Include="Business\WorkSpace\Handler\Command\" />
       <Folder Include="wwwroot\Avatar\" />
       <Folder Include="wwwroot\File\" />

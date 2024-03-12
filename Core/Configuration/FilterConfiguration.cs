@@ -11,6 +11,8 @@ public static class FilterConfiguration
             options =>
             {
                 options.Filters.Add(typeof(ModelStateFilter), order: 1);
+                //HATALI, RESULTFILTER'I CALISTIRMA
+                // options.Filters.Add(typeof(ResultFilter), order: 2);
                 options.EnableEndpointRouting = true;
             });
     }

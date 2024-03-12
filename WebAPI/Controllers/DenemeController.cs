@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Business.TaskList.Request;
 using WebAPI.Controllers.Base;
 using WebAPI.Services.OpenAI;
 
 namespace WebAPI.Controllers;
-
+[AllowAnonymous]
 public class DenemeController:BaseController
 {
     private OpenAiService _openAiService;
@@ -14,7 +15,7 @@ public class DenemeController:BaseController
         _openAiService = openAiService;
     }
 
-    [HttpGet][AllowAnonymous]
+    [HttpGet]
 
     public async Task<IActionResult> CompleteSentence(string text)
     {
@@ -22,4 +23,11 @@ public class DenemeController:BaseController
 
         return Ok(result);
     }
+
+    [HttpPost]
+    public IActionResult denemeVal(CreateTaskListRequest request)
+    {
+        return Ok(request);
+    }
+
 }
