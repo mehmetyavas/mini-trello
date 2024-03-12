@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Core.Data.Dto.Auth;
 using Core.Data.Dto.User;
-using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Data.Repository.Base;
 using Core.Exceptions;
@@ -9,7 +9,7 @@ using Core.Utilities.Helpers;
 using Core.Utilities.Security.Jwt;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core.Data.Repository;
+namespace Core.Data.Repository.Default;
 
 public class UserRepository : BaseRepository<User, AppDbContext>
 {

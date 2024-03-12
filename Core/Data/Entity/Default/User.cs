@@ -5,7 +5,7 @@ using Core.Data.Enum;
 using Core.Extensions;
 using Unique = Microsoft.EntityFrameworkCore.IndexAttribute;
 
-namespace Core.Data.Entity;
+namespace Core.Data.Entity.Default;
 
 //TODO add address 
 //TODO seperate user and userInfo
@@ -34,8 +34,7 @@ public class User : BaseEntity<Guid>
     public long? LoginCode { get; set; }
 
     public DateTime? LoginCodeExpiredAt { get; set; }
-    
-    
+
 
     public byte[]? PasswordSalt { get; set; }
     public byte[]? PasswordHash { get; set; }
@@ -44,6 +43,9 @@ public class User : BaseEntity<Guid>
     public virtual ICollection<UserLogin> UserLogins { get; set; } = new List<UserLogin>();
 
     public virtual ICollection<UserPermission> UserPermissions { get; set; } = new List<UserPermission>();
+
+    public ICollection<WorkSpace> WorkSpaces { get; set; } = new List<WorkSpace>();
+    public ICollection<WorkSpaceMember> WorkSpaceMembers { get; set; } = new List<WorkSpaceMember>();
 
 
     public List<long> Roles()

@@ -40,7 +40,7 @@ builder.Services.ConfigureFilters();
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
-builder.ConfigureRateLimiter();
+ builder.ConfigureRateLimiter();    
 
 
 

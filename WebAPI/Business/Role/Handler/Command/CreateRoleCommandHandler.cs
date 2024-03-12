@@ -25,7 +25,7 @@ public class CreateRoleCommandHandler : IRequestHandler<CreateRoleRequest, IResu
         await _unitOfWork.Roles.CheckRoles(request.Role, cancellationToken);
 
 
-        _unitOfWork.Roles.Add(new Core.Data.Entity.Role
+        _unitOfWork.Roles.Add(new Core.Data.Entity.Default.Role
         {
             Name = request.Role,
             Description = request.Description,

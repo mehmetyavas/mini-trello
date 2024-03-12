@@ -1,12 +1,12 @@
 using Core.Attributes;
-using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Data.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Extensions;
-using Action = Core.Data.Entity.Action;
+using Action = Core.Data.Entity.Default.Action;
 
-namespace Core.Data.Repository;
+namespace Core.Data.Repository.Default;
 
 public class ActionRepository : BaseRepository<Action, AppDbContext>
 {

@@ -1,9 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using Core.Data.Entity.Base;
-using Core.Data.Enum;
 
-namespace Core.Data.Entity;
+namespace Core.Data.Entity.Default;
 
 public class Role : BaseEntity<long>
 {

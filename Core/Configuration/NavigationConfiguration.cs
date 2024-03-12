@@ -1,4 +1,5 @@
 using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Configuration;

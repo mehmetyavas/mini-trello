@@ -1,5 +1,6 @@
 using Core.Data;
 using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Utilities.Helpers;
 using Microsoft.AspNetCore.Builder;

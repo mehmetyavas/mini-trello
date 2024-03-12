@@ -3,6 +3,7 @@ using System;
 using Core.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240312065534_workspace")]
+    partial class workspace
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,15 +38,13 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(7720));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(7820));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(7960));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("RowStatus")
                         .ValueGeneratedOnAdd()
@@ -66,7 +67,7 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8130));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(8130));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
@@ -79,9 +80,7 @@ namespace Core.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8260));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -101,7 +100,7 @@ namespace Core.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(490),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 273, DateTimeKind.Local).AddTicks(20),
                             Description = "All Permission",
                             IsStrict = true,
                             Name = "Admin",
@@ -110,7 +109,7 @@ namespace Core.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(500),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 273, DateTimeKind.Local).AddTicks(20),
                             IsStrict = true,
                             Name = "Staff",
                             RowStatus = 1
@@ -118,7 +117,7 @@ namespace Core.Migrations
                         new
                         {
                             Id = 3L,
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(500),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 273, DateTimeKind.Local).AddTicks(20),
                             IsStrict = true,
                             Name = "User",
                             RowStatus = 1
@@ -139,15 +138,13 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8410));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(8300));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8590));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
@@ -181,7 +178,7 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8710));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(8520));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
@@ -213,9 +210,7 @@ namespace Core.Migrations
                         .HasColumnType("character varying(13)");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8840));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("bytea");
@@ -248,30 +243,30 @@ namespace Core.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c7f10563-4a17-4bb5-b997-66b3c626ca38"),
-                            BirthDate = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(400),
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(410),
+                            Id = new Guid("13cef9f5-b6c0-4c7a-9642-c76385dac125"),
+                            BirthDate = new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9940),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9950),
                             Email = "mehmett76ers@gmail.com",
                             Fullname = "Mehmet Emin Yavaş",
                             Gender = 1,
                             IsVerified = true,
                             MobilePhone = "5054443322",
                             RowStatus = 1,
-                            VerifiedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(410),
+                            VerifiedAt = new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9950),
                             VerifyToken = "admin"
                         },
                         new
                         {
-                            Id = new Guid("ffea832d-1efe-4c5a-8ee7-33b571b1e16e"),
-                            BirthDate = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(460),
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(460),
+                            Id = new Guid("05285270-a010-49f2-8082-72114d830dd4"),
+                            BirthDate = new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9990),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9990),
                             Email = "emre.cunlu@gmail.com",
                             Fullname = "Emrecan Ünlü",
                             Gender = 1,
                             IsVerified = true,
                             MobilePhone = "5554443322",
                             RowStatus = 1,
-                            VerifiedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(460),
+                            VerifiedAt = new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9990),
                             VerifyToken = "admin"
                         });
                 });
@@ -294,7 +289,7 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(8930));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(8740));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
@@ -303,9 +298,7 @@ namespace Core.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9090));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("ProviderKey")
                         .IsRequired()
@@ -346,15 +339,13 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9200));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(8920));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9340));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("RowStatus")
                         .ValueGeneratedOnAdd()
@@ -382,15 +373,13 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9460));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9090));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9620));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<long>("RoleId")
                         .HasColumnType("bigint");
@@ -415,18 +404,18 @@ namespace Core.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(520),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 273, DateTimeKind.Local).AddTicks(40),
                             RoleId = 1L,
                             RowStatus = 1,
-                            UserId = new Guid("c7f10563-4a17-4bb5-b997-66b3c626ca38")
+                            UserId = new Guid("13cef9f5-b6c0-4c7a-9642-c76385dac125")
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedAt = new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(520),
+                            CreatedAt = new DateTime(2024, 3, 12, 9, 55, 34, 273, DateTimeKind.Local).AddTicks(40),
                             RoleId = 1L,
                             RowStatus = 1,
-                            UserId = new Guid("ffea832d-1efe-4c5a-8ee7-33b571b1e16e")
+                            UserId = new Guid("05285270-a010-49f2-8082-72114d830dd4")
                         });
                 });
 
@@ -441,7 +430,7 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9720));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9330));
 
                     b.Property<Guid>("CreatorUserId")
                         .HasColumnType("uuid");
@@ -454,9 +443,7 @@ namespace Core.Migrations
                         .HasColumnType("character varying(70)");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 817, DateTimeKind.Local).AddTicks(9930));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("RowStatus")
                         .ValueGeneratedOnAdd()
@@ -468,11 +455,14 @@ namespace Core.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorUserId");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("WorkSpaces");
+                    b.ToTable("WorkSpace");
                 });
 
             modelBuilder.Entity("Core.Data.Entity.WorkSpaceMember", b =>
@@ -486,7 +476,7 @@ namespace Core.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(40));
+                        .HasDefaultValue(new DateTime(2024, 3, 12, 9, 55, 34, 272, DateTimeKind.Local).AddTicks(9580));
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp without time zone");
@@ -495,9 +485,7 @@ namespace Core.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime?>("Modified")
-                        .ValueGeneratedOnUpdate()
-                        .HasColumnType("timestamp without time zone")
-                        .HasDefaultValue(new DateTime(2024, 3, 12, 10, 56, 2, 818, DateTimeKind.Local).AddTicks(200));
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("RowStatus")
                         .ValueGeneratedOnAdd()
@@ -516,7 +504,7 @@ namespace Core.Migrations
 
                     b.HasIndex("WorkSpaceId");
 
-                    b.ToTable("WorkSpaceMembers");
+                    b.ToTable("WorkSpaceMember");
                 });
 
             modelBuilder.Entity("Core.Data.Entity.Default.RolePermission", b =>
@@ -581,13 +569,13 @@ namespace Core.Migrations
 
             modelBuilder.Entity("Core.Data.Entity.WorkSpace", b =>
                 {
-                    b.HasOne("Core.Data.Entity.Default.User", "CreatorUser")
+                    b.HasOne("Core.Data.Entity.Default.User", "User")
                         .WithMany("WorkSpaces")
-                        .HasForeignKey("CreatorUserId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CreatorUser");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Core.Data.Entity.WorkSpaceMember", b =>

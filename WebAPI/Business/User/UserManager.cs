@@ -35,7 +35,7 @@ public class UserManager
     public async Task<IResult<List<UserResponse>>> GetUsers(string search,
         CancellationToken cancellationToken = default)
     {
-        Expression<Func<Core.Data.Entity.User, bool>>? expression = null;
+        Expression<Func<Core.Data.Entity.Default.User, bool>>? expression = null;
 
         var isInt = Guid.TryParse(search, out var id);
 

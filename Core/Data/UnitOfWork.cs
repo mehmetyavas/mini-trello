@@ -1,4 +1,5 @@
 using Core.Data.Repository;
+using Core.Data.Repository.Default;
 
 namespace Core.Data;
 
@@ -14,6 +15,11 @@ public class UnitOfWork : IDisposable
     private readonly ActionRepository _actionRepository;
     private readonly RolePermissionRepository _rolePermissionRepository;
     private readonly UserPermissionRepository _userPermissionRepository;
+
+    private readonly WorkSpaceRepository? _workSpaceRepository;
+    private readonly WorkSpaceMembersRepository? _workSpaceMembersRepository;
+
+    //TODO: buraya çözüm bul üstteki private kodları incele
 
     public UnitOfWork(AppDbContext context)
     {
@@ -50,4 +56,8 @@ public class UnitOfWork : IDisposable
     public RolePermissionRepository RolePermissions => _rolePermissionRepository ?? new(_context);
 
     public UserPermissionRepository UserPermissions => _userPermissionRepository ?? new(_context);
+
+    public WorkSpaceRepository WorkSpaces => _workSpaceRepository ?? new(_context);
+
+    public WorkSpaceMembersRepository WorkSpaceMembers => _workSpaceMembersRepository ?? new(_context);
 }

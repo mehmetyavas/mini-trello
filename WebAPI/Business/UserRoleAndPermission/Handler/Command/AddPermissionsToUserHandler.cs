@@ -1,5 +1,6 @@
 ﻿using Core.Data;
 using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Exceptions;
 using Core.Extensions;

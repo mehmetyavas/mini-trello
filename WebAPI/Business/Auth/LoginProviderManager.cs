@@ -46,7 +46,7 @@ public class LoginProviderManager
 
         if (user is null)
         {
-            _unitOfWork.Users.Add(new Core.Data.Entity.User
+            _unitOfWork.Users.Add(new Core.Data.Entity.Default.User
             {
                 Fullname = $"{facebookUserInfo.Data.FirstName} {facebookUserInfo.Data.LastName}",
                 Email = facebookUserInfo.Data.Email,
@@ -88,7 +88,7 @@ public class LoginProviderManager
 
         if (user is null)
         {
-            _unitOfWork.Users.Add(new Core.Data.Entity.User
+            _unitOfWork.Users.Add(new Core.Data.Entity.Default.User
             {
                 Fullname = $"{googleUserInfo.Data.GivenName} {googleUserInfo.Data.FamilyName}",
                 Email = googleUserInfo.Data.Email,

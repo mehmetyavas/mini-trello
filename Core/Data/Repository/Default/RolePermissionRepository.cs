@@ -1,7 +1,7 @@
-using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Core.Data.Repository.Base;
 
-namespace Core.Data.Repository;
+namespace Core.Data.Repository.Default;
 
 public class RolePermissionRepository : BaseRepository<RolePermission, AppDbContext>
 {

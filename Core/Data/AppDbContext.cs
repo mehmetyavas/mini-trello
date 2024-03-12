@@ -2,11 +2,14 @@ using System.Linq.Expressions;
 using Core.Configuration;
 using Core.Data.Entity;
 using Core.Data.Entity.Base;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
+using Core.Data.Trigger.Base;
+using Core.Data.Trigger.UserTrigger;
 using Core.Services;
 using Core.Utilities.Helpers;
 using Microsoft.EntityFrameworkCore;
-using Action = Core.Data.Entity.Action;
+using Action = Core.Data.Entity.Default.Action;
 
 namespace Core.Data;
 
@@ -31,11 +34,23 @@ public class AppDbContext : DbContext
 
     public DbSet<UserLogin> UserLogins { get; set; }
     public DbSet<UserPermission> UserPermissions { get; set; }
+    
+    
+    public DbSet<WorkSpace> WorkSpaces { get; set; }
+    public DbSet<WorkSpaceMember> WorkSpaceMembers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         base.OnConfiguring(optionsBuilder.UseNpgsql(AppConfig.ConnectionString));
+        optionsBuilder.UseTriggers(tr =>
+        {
+            tr.AddTrigger<UserBeforeTrigger>();
+            
+             
+            // tr.AddTrigger<BaseBeforeTrigger<WorkSpace>>();
+            // tr.AddTrigger<BaseBeforeTrigger<WorkSpaceMember>>();
+        });
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -58,6 +73,8 @@ public class AppDbContext : DbContext
             builder.Entity(entity).Property(nameof(IEntity.CreatedAt)).HasDefaultValue(DateTime.Now);
 
             builder.Entity(entity).Property(nameof(IEntity.RowStatus)).HasDefaultValue(RowStatus.Active);
+            builder.Entity(entity).Property(nameof(IEntity.Modified)).ValueGeneratedOnUpdate()
+                .HasDefaultValue(DateTime.Now);
 
 
             builder.Entity(entity).HasQueryFilter(lambda);

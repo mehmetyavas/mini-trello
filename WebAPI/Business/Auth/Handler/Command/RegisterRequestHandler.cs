@@ -1,4 +1,5 @@
 using Core.Data;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Utilities.Helpers;
 using Core.Utilities.Results;
@@ -41,7 +42,7 @@ public class RegisterRequestHandler : IRequestHandler<RegisterRequest, IResult>
 
         var verifyToken = CodeGenerator.CreateVerifyToken();
 
-        var user = new Core.Data.Entity.User
+        var user = new Core.Data.Entity.Default.User
         {
             RowStatus = RowStatus.Active,
             Fullname = request.FullName,
@@ -56,7 +57,7 @@ public class RegisterRequestHandler : IRequestHandler<RegisterRequest, IResult>
         _unitOfWork.Users.Add(user);
 
 
-        _unitOfWork.UserRoles.Add(new Core.Data.Entity.UserRole
+        _unitOfWork.UserRoles.Add(new UserRole
         {
             RowStatus = RowStatus.Active,
             RoleId = (long)Roles.User,

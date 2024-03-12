@@ -20,7 +20,7 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery, IResult<Pagin
     public async Task<IResult<PagingResponse<List<UserResponse>>>> Handle(GetUsersQuery request,
         CancellationToken cancellationToken)
     {
-        Expression<Func<Core.Data.Entity.User, bool>>? expression = null;
+        Expression<Func<Core.Data.Entity.Default.User, bool>>? expression = null;
 
         if (!string.IsNullOrWhiteSpace(request.Search))
         {

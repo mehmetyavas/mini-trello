@@ -1,10 +1,9 @@
-using Core.Data.Entity;
+using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Data.Repository.Base;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core.Data.Repository;
+namespace Core.Data.Repository.Default;
 
 public class UserPermissionRepository : BaseRepository<UserPermission, AppDbContext>
 {
