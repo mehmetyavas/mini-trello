@@ -12,7 +12,5 @@ public class CreateTaskListRequest:IRequest<IResult<TaskListResponse>>
 
     [Required, MinLength(3), MaxLength(25)]
     public string Title { get; set; } = null!;
-    [MaxValue(255)]
-    public byte Order { get; set; }
 
 }

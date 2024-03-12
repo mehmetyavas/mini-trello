@@ -67,5 +67,6 @@ public enum LangKeys
     InvalidPasswordFormat,
     AvatarUpdatedSuccessfully,
     EmailOrPasswordIncorrect,
-    UserIsNotVerified
+    UserIsNotVerified,
+    MaxTaskListValue
 }

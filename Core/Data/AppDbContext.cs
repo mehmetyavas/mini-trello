@@ -4,6 +4,7 @@ using Core.Data.Entity;
 using Core.Data.Entity.Base;
 using Core.Data.Entity.Default;
 using Core.Data.Enum;
+using Core.Data.Trigger;
 using Core.Data.Trigger.Base;
 using Core.Data.Trigger.UserTrigger;
 using Core.Services;
@@ -47,6 +48,8 @@ public class AppDbContext : DbContext
         optionsBuilder.UseTriggers(tr =>
         {
             tr.AddTrigger<UserBeforeTrigger>();
+            tr.AddTrigger<TaskListBeforeTrigger>();
+            tr.AddTrigger<WorkSpaceBeforeTrigger>();
             
              
             // tr.AddTrigger<BaseBeforeTrigger<WorkSpace>>();

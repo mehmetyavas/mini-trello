@@ -2,6 +2,7 @@ using Core.Data.Entity;
 using Core.Data.Entity.Default;
 using Core.Data.Enum;
 using Core.Data.Trigger.Base;
+using Core.Extensions;
 using EntityFrameworkCore.Triggered;
 
 namespace Core.Data.Trigger.UserTrigger;
@@ -34,6 +35,7 @@ public class UserBeforeTrigger : IBeforeSaveTrigger<User>
                 _dbContext.WorkSpaces.Add(new WorkSpace
                 {
                     Title = $"Welcome, {context.Entity.Fullname}",
+                    Slug = $"Welcome, {context.Entity.Fullname}".ToSlug(),
                     Description = "Default Workspace",
                     CreatorUserId = context.Entity.Id,
                     CreatorUser = context.Entity,

@@ -1,3 +1,5 @@
+using Core.Utilities.Helpers;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Business.TaskList.Request;
@@ -5,18 +7,21 @@ using WebAPI.Controllers.Base;
 using WebAPI.Services.OpenAI;
 
 namespace WebAPI.Controllers;
+
 [AllowAnonymous]
-public class DenemeController:BaseController
+public class DenemeController : BaseController
 {
     private OpenAiService _openAiService;
 
-    public DenemeController(OpenAiService openAiService)
+    private IMediator _mediator;
+
+    public DenemeController(OpenAiService openAiService, IMediator mediator)
     {
         _openAiService = openAiService;
+        _mediator = mediator;
     }
 
     [HttpGet]
-
     public async Task<IActionResult> CompleteSentence(string text)
     {
         var result = await _openAiService.CompleteSentence(text);
@@ -25,9 +30,15 @@ public class DenemeController:BaseController
     }
 
     [HttpPost]
-    public IActionResult denemeVal(CreateTaskListRequest request)
+    public IActionResult DenemeVal(CreateTaskListRequest request)
     {
         return Ok(request);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateTask(CreateTaskListRequest request)
+    {
+        var result = await _mediator.Send(request);
+        return Ok(result);
+    }
 }

@@ -15,4 +15,5 @@ public class TaskListRepository:BaseRepository<TaskList,AppDbContext>
         return Context.TaskLists
             .Include(ws => ws.WorkSpace);
     }
+    
 }

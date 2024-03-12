@@ -10,6 +10,9 @@ public class WorkSpace : BaseEntity
 {
     [Required, MinLength(3), MaxLength(20)]
     public string Title { get; set; } = null!;
+    
+    [ MinLength(3), MaxLength(70)]
+    public string Slug { get; set; } = null!;
 
     [MaxLength(70)] public string? Description { get; set; }
 
