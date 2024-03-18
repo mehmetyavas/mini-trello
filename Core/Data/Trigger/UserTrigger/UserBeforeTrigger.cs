@@ -34,16 +34,45 @@ public class UserBeforeTrigger : IBeforeSaveTrigger<User>
                 
                 _dbContext.WorkSpaces.Add(new WorkSpace
                 {
+                    Id = 0,
                     Title = $"Welcome, {context.Entity.Fullname}",
                     Slug = $"Welcome, {context.Entity.Fullname}".ToSlug(),
                     Description = "Default Workspace",
                     CreatorUserId = context.Entity.Id,
                     CreatorUser = context.Entity,
+                    TaskLists = CreateTaskListsForUser(),
                 });
             }
         }
 
         await Task.CompletedTask;
         
+    }
+
+    private List<TaskList> CreateTaskListsForUser()
+    {
+        var taskLists = new List<TaskList>
+        {
+            new ()
+            {
+                Title = "To Do",
+                Slug = "To Do".ToSlug(),
+                Order = 1,
+            },
+            new ()
+            {
+                Title = "In Progress",
+                Slug = "In Progress".ToSlug(),
+                Order = 2,
+            },
+            new ()
+            {
+                Title = "Done",
+                Slug = "Done".ToSlug(),
+                Order = 3,
+            },
+        };
+        return taskLists;
+
     }
 }
