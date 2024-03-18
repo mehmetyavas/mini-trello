@@ -1,10 +1,10 @@
+using Application.Features.User.Request;
+using Application.Features.User.Response;
 using Core.Attributes;
 using Core.Data.Dto.Auth;
 using Core.Data.Enum;
 using Core.Utilities.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Business.User.Request;
-using WebAPI.Business.User.Response;
 using WebAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;

@@ -1,9 +1,9 @@
+using Application.Features.RolePermissions.Request;
+using Application.Features.RolePermissions.Response;
 using Core.Attributes;
 using Core.Data.Enum;
 using Core.Utilities.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Business.RolePermissions.Request;
-using WebAPI.Business.RolePermissions.Response;
 using WebAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;

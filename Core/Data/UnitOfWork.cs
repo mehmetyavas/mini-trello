@@ -46,7 +46,7 @@ public class UnitOfWork : IDisposable
     }
 
 
-    public UserRepository Users => _userRepository ?? new(_context);
+    public UserRepository Users => _userRepository ?? new UserRepository(_context);
     public UserLoginRepository UserLogins => _userLoginRepository ?? new(_context);
 
     public RoleRepository Roles => _roleRepository ?? new(_context);

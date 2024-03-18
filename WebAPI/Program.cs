@@ -28,6 +28,9 @@ builder.Services.AddMemoryCache();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient();
 
+builder.Services.ConfigureFilters();
+
+
 
 builder.Services.ConfigureCors();
 
@@ -36,9 +39,8 @@ builder.Services.ConfigureAuthentication();
 builder.Services.ConfigureSwagger();
 
 
-builder.Services.ConfigureFilters();
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(AppDomain.CurrentDomain.Load("Application"));
 
  builder.ConfigureRateLimiter();    
 
@@ -106,9 +108,11 @@ app.UseCors("AllowOrigin");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
+
 app.UseAuthorization();
 
-app.UseAuthentication();
 
 app.MapControllers();
 

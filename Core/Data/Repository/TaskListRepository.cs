@@ -57,4 +57,22 @@ public class TaskListRepository : BaseRepository<TaskList, AppDbContext>
 
         return maxValue + 1;
     }
+
+
+    public async Task UpdateOrderNos(byte order,long updatedIdOrder)
+    {
+        var tasklists = await Context.TaskLists
+            .IgnoreAutoIncludes()
+            .Where(x => x.Order >= order && x.Id != updatedIdOrder)
+            .ToListAsync();
+
+        var currentOrder = order;
+        tasklists.ForEach(taskList =>
+        {
+            currentOrder++;
+            taskList.Order = currentOrder;
+
+            Context.TaskLists.Update(taskList);
+        });
+    }
 }

@@ -29,11 +29,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Business\WorkSpace\Handler\Command\" />
       <Folder Include="wwwroot\Avatar\" />
       <Folder Include="wwwroot\File\" />
       <Folder Include="wwwroot\ProjectFile\" />

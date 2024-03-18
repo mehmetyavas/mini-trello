@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Application.Features.UserRoleAndPermission.Request;
 using Core.Attributes;
 using Core.Data.Enum;
 using Core.Utilities.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Business.UserRoleAndPermission.Request;
 using WebAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;

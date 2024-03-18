@@ -1,8 +1,7 @@
-using Core.Utilities.Helpers;
+using Application.Features.TaskList.Request;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Business.TaskList.Request;
 using WebAPI.Controllers.Base;
 using WebAPI.Services.OpenAI;
 

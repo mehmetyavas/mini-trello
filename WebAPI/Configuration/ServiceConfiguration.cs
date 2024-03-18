@@ -1,3 +1,8 @@
+using Application.Features.Auth;
+using Application.Features.Facebook;
+using Application.Features.Google;
+using Application.Features.Mail;
+using Application.Features.User;
 using Core.ActionFilters;
 using Core.Services;
 using Core.Services.FileUploader;
@@ -5,11 +10,6 @@ using Core.Utilities.Helpers;
 using Core.Utilities.Security.Jwt;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using WebAPI.Business.Auth;
-using WebAPI.Business.Facebook;
-using WebAPI.Business.Google;
-using WebAPI.Business.Mail;
-using WebAPI.Business.User;
 using WebAPI.Services.User;
 
 namespace WebAPI.Configuration;

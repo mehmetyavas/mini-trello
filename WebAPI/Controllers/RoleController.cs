@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using Application.Features.Role.Request;
+using Application.Features.Role.Response;
 using Core.Attributes;
 using Core.Data.Enum;
 using Core.Utilities.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.Business.Role.Request;
-using WebAPI.Business.Role.Response;
 using WebAPI.Controllers.Base;
 
 namespace WebAPI.Controllers;
