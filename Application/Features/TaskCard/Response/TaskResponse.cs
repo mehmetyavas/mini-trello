@@ -1,4 +1,4 @@
-namespace Application.Features.Task.Response;
+namespace Application.Features.TaskCard.Response;
 
 public class TaskResponse
 {

@@ -40,6 +40,7 @@ public class AppDbContext : DbContext
     public DbSet<WorkSpace> WorkSpaces { get; set; }
     public DbSet<WorkSpaceMember> WorkSpaceMembers { get; set; }
     public DbSet<TaskList> TaskLists { get; set; }
+    public DbSet<TaskCard> TaskCards { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -49,7 +50,9 @@ public class AppDbContext : DbContext
         {
             tr.AddTrigger<UserBeforeTrigger>();
             tr.AddTrigger<TaskListBeforeTrigger>();
+            tr.AddTrigger<TaskCardBeforeTrigger>();
             tr.AddTrigger<WorkSpaceBeforeTrigger>();
+            
             
              
             // tr.AddTrigger<BaseBeforeTrigger<WorkSpace>>();
