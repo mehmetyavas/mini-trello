@@ -20,6 +20,7 @@ public class UnitOfWork : IDisposable
     private readonly WorkSpaceMembersRepository? _workSpaceMembersRepository;
     
     private readonly TaskListRepository? _taskListRepository;
+    private readonly TaskCardRepository? _taskCardRepository;
 
     //TODO: buraya çözüm bul üstteki private kodları incele
 
@@ -63,4 +64,5 @@ public class UnitOfWork : IDisposable
 
     public WorkSpaceMembersRepository WorkSpaceMembers => _workSpaceMembersRepository ?? new(_context);
     public TaskListRepository TaskLists => _taskListRepository ?? new(_context);
+    public TaskCardRepository TaskCards => _taskCardRepository ??  new(_context);
 }
