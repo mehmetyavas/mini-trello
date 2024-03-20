@@ -16,4 +16,10 @@
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\TaskCard\Handler\Command\" />
+      <Folder Include="Features\TaskCard\Handler\Query\" />
+      <Folder Include="Features\TaskCard\Request\" />
+    </ItemGroup>
+
 </Project>

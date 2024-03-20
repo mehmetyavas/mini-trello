@@ -32,8 +32,8 @@ public class LoginRequestHandler : IRequestHandler<LoginRequest, IResult>
                 cancellationToken),
             LoginProvider.Apple => new ErrorResult(LangKeys.NotSupported),
             LoginProvider.Password => await _providerManager.LoginWithPassword(
-                request.Email,
-                request.Password,
+                request.Email!,
+                request.Password!,
                 request.RememberMe),
             _ => new ErrorResult(LangKeys.NotSupported),
         };

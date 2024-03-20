@@ -3,6 +3,7 @@ using Core.Data.Enum;
 using Core.Extensions;
 using EntityFrameworkCore.Triggered;
 using static EntityFrameworkCore.Triggered.ChangeType;
+using Task = System.Threading.Tasks.Task;
 
 namespace Core.Data.Trigger;
 

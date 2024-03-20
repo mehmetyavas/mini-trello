@@ -6,6 +6,7 @@ using Core.Utilities.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Task = System.Threading.Tasks.Task;
 
 namespace Core.Configuration;
 
