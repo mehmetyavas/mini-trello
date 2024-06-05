@@ -1,5 +1,7 @@
 using System.Globalization;
 using System.Reflection;
+using Application;
+using Application.Features.Role.Pipeline;
 using AspNetCoreRateLimit;
 using Core.Attributes;
 using Core.Configuration;
@@ -31,7 +33,6 @@ builder.Services.AddHttpClient();
 builder.Services.ConfigureFilters();
 
 
-
 builder.Services.ConfigureCors();
 
 builder.Services.ConfigureAuthentication();
@@ -39,12 +40,11 @@ builder.Services.ConfigureAuthentication();
 builder.Services.ConfigureSwagger();
 
 
-
 builder.Services.AddMediatR(AppDomain.CurrentDomain.Load("Application"));
 
- builder.ConfigureRateLimiter();    
+builder.ConfigureRateLimiter();
 
-
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(DenemeBehavior<,>));
 
 
 builder.Services.AddDbContext<AppDbContext>();
@@ -73,15 +73,16 @@ app.UseRequestLocalization(new RequestLocalizationOptions
 ServiceTool.ServiceProvider = app.Services;
 
 //permissions 
-_ = app.ActionData();
+// _ = app.ActionData();
 
 app.CreateFiles();
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<Deneme>();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if ( app.Environment.IsDevelopment() )
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>

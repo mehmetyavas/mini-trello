@@ -2,13 +2,15 @@ using Application.Features.Role.Request;
 using Core.Data;
 using Core.Data.Enum;
 using Core.Extensions;
+using Core.Utilities.Middleware;
 using Core.Utilities.Results;
 using MediatR;
 using IResult = Core.Utilities.Results.IResult;
 
 namespace Application.Features.Role.Handler.Command;
 
-public class CreateRoleCommandHandler : IRequestHandler<CreateRoleRequest, IResult>
+[Deneme]
+public class CreateRoleCommandHandler: IRequestHandler<CreateRoleRequest, IResult>,ITransactionMarker
 {
     private readonly UnitOfWork _unitOfWork;
 
@@ -17,9 +19,9 @@ public class CreateRoleCommandHandler : IRequestHandler<CreateRoleRequest, IResu
         _unitOfWork = unitOfWork;
     }
 
+    [Deneme]
     public async Task<IResult> Handle(CreateRoleRequest request, CancellationToken cancellationToken)
     {
-       
         _unitOfWork.Roles.CheckStrictRoles(request.Role);
 
         await _unitOfWork.Roles.CheckRoles(request.Role, cancellationToken);
@@ -33,6 +35,13 @@ public class CreateRoleCommandHandler : IRequestHandler<CreateRoleRequest, IResu
 
         await _unitOfWork.SaveAsync(cancellationToken);
 
+        throw new Exception();
+    
         return new SuccessResult(LangKeys.Success.Localize());
+
+
+        if ( false )
+        {
+        }
     }
 }

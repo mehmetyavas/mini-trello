@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using Application;
 using Application.Features.Role.Request;
 using Application.Features.Role.Response;
 using Core.Attributes;
 using Core.Data.Enum;
+using Core.Utilities.Middleware;
 using Core.Utilities.Results;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Controllers.Base;
@@ -49,6 +51,7 @@ public class RoleController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResult<List<RoleResponse>>))]
     [ActionKey(ActionName.RoleCreate)]
     [HttpPost]
+    
     public async Task<IActionResult> Create(CreateRoleRequest request, CancellationToken cancellationToken = default)
     {
         var result = await Mediator.Send(request, cancellationToken);
@@ -63,6 +66,7 @@ public class RoleController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessResult<List<RoleResponse>>))]
     [ActionKey(ActionName.RoleUpdate)]
     [HttpPut]
+    [Deneme]
     public async Task<IActionResult> Update(UpdateRoleRequest request, CancellationToken cancellationToken = default)
     {
         var result = await Mediator.Send(request, cancellationToken);

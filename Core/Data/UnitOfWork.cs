@@ -1,9 +1,11 @@
+using System.Data;
 using Core.Data.Repository;
 using Core.Data.Repository.Default;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Core.Data;
 
-public class UnitOfWork : IDisposable
+public class UnitOfWork: IDisposable
 {
     public Guid UserId { get; set; }
     private readonly AppDbContext _context;
@@ -18,7 +20,7 @@ public class UnitOfWork : IDisposable
 
     private readonly WorkSpaceRepository? _workSpaceRepository;
     private readonly WorkSpaceMembersRepository? _workSpaceMembersRepository;
-    
+
     private readonly TaskListRepository? _taskListRepository;
     private readonly TaskCardRepository? _taskCardRepository;
 
@@ -34,6 +36,25 @@ public class UnitOfWork : IDisposable
     public void Dispose()
     {
         _context?.Dispose();
+    }
+
+
+    public async Task<IDbTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+    {
+      var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+      return transaction.GetDbTransaction();
+    }
+
+
+    public async Task CommitTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        await _context.Database.CommitTransactionAsync(cancellationToken);
+    }
+
+
+    public async Task RollbackTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        await _context.Database.RollbackTransactionAsync(cancellationToken);
     }
 
     public void Save()
@@ -64,5 +85,5 @@ public class UnitOfWork : IDisposable
 
     public WorkSpaceMembersRepository WorkSpaceMembers => _workSpaceMembersRepository ?? new(_context);
     public TaskListRepository TaskLists => _taskListRepository ?? new(_context);
-    public TaskCardRepository TaskCards => _taskCardRepository ??  new(_context);
+    public TaskCardRepository TaskCards => _taskCardRepository ?? new(_context);
 }
